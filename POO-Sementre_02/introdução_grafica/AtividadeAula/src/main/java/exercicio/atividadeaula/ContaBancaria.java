@@ -6,10 +6,9 @@ package exercicio.atividadeaula;
 
 /**
  *
- * @author felip
+ * @author Artur
  */
 public class ContaBancaria {
- 
     private String numero;
     private String titular;
     private double saldo;
