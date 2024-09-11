@@ -4,6 +4,7 @@
  */
 package com.mycompany.lista05;
 
+import lista05.App;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -59,7 +60,7 @@ public class Lista05Test {
     public void testMain() {
         System.out.println("main");
         String[] args = null;
-        Lista05.main(args);
+        App.main(args);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

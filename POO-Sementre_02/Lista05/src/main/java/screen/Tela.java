@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.lista05;
+package screen;
+
+import enums.Quadrante;
+import entidades.Ponto;
 
 /**
  *
@@ -170,6 +173,11 @@ public class Tela extends javax.swing.JFrame {
     private void jButtonAvaliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvaliarActionPerformed
         String xText = jTextFieldX.getText();
         String yText = jTextFieldY.getText();
+        
+        if (xText.isBlank() || xText.isEmpty() || yText.isBlank() || yText.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, preencha ambos os campos X e Y.", "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
         if (!xText.matches("[0-9.]+") || !yText.matches("[0-9.]+")) {
             javax.swing.JOptionPane.showMessageDialog(this, "Por favor, os campos devem ser preenchidos por números", "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
