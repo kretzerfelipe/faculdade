@@ -76,7 +76,7 @@ public class Funcionario {
         }
         
         if (indentificarFaixaIrpg() == FaixaIrpf.FAIXA03) {
-            return (this.valorSalario - 2826.65) / 100 * 15;
+            return (this.valorSalario - 2826.66) / 100 * 15;
         }
         
         if (indentificarFaixaIrpg() == FaixaIrpf.FAIXA04) {
