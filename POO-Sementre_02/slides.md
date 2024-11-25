@@ -637,3 +637,122 @@ public class Classe2 extends Classe1 {
 
 ## Diversos
 Java é uma linguagem de herança simples, ao contrário de algumas linguagens que são de herança múltipla, permitindo várias superclasses diretas para uma mesma classe
+
+## Generalização
+
+- É um processo de encontrar e criar superclasses:
+  - Num conjunto de classes relacionadas, localizar os membros (métodos e atributos) comuns entre as classes;
+  - Mover os membros comuns para uma classe, tornando-a superclasse das classes originais;
+  - Para os métodos que tiverem método diferenciado, manter na classe original.
+
+## Exemplo de Aplicação
+
+![img](imagens-slides/aplicacao-exemplo-01.png)
+![img](imagens-slides/aplicacao-exemplo-02.png)
+
+- Mantido porque tem algoritmo diferente dos demais.
+- O processo de generalização pode ser aplicado mais vezes, com um conjunto menor de classes.
+- Se após aplicar o processo de generalização, uma classe não possuir membro algum, esta classe pode ser promovida para ser superclasse das demais classes.
+
+![img](imagens-slides/aplicacao-exemplo-03.png)
+
+## Generalização em Muitas Ocasiões
+
+- Em muitas ocasiões, a superclasse que surgiu a partir do processo de generalização não tem um significado no mundo real:
+  - Trata-se de um efeito do processo de generalização;
+  - A superclasse pode representar um conceito abstrato que não existe no mundo real.
+
+## Classe Abstrata
+
+- Uma classe que representa um conceito genérico.
+- Em UML, é expressa com o nome da classe em itálico.
+- Em Java, utiliza-se o modificador `abstract`, como em:
+
+```java
+public abstract class ContaBancaria {
+  // ...
+}
+```
+- Por ser uma abstração, não é possível criar objetos de classes abstratas.
+- Classes abstratas precisam ser estendidas para serem reutilizadas:
+  - Classes que não são abstratas são conhecidas como classes concretas;
+  - Somente classes concretas podem ser instanciadas.
+
+```java
+Classe1 c1 = new Classe1();
+public abstract class Classe1 {
+  // Erro de compilação: "não pode instanciar Classe1"
+}
+```
+
+## Métodos abstratos
+
+### Motivação - Métodos abstratos
+
+![img](imagens-slides/abstrato-01.png)
+
+- Como evitar esta implementação?
+
+```java
+public class Figura {
+  private Color cor;
+  public void desenhar() {
+    // implementação
+  }
+}
+public class Pentagono extends Figura {
+  // implementação
+}
+```
+- Definindo um método como abstrato, instruímos o compilador a exigir que as subclasses implementem um método com tal assinatura.
+- Em UML, os métodos abstratos são escritos em itálico.
+
+## Exemplo
+- Ao especificar o método desenhar() como abstrato:
+
+![img](imagens-slides/abstrato-02.png)
+
+```java
+public class Pentagono extends Figura {
+    // Erro de compilação: “Pentagono precisa implementar o método abstrato desenhar()”
+}
+```
+
+- Um método abstrato é um método que não possui implementação, pois espera-se que as subclasses se encarreguem de implementá-lo.
+- Declaramos um método abstrato para indicar que o método deve existir na subclasse, embora não há implementação para o método na superclasse
+- Qualquer classe que contém um método abstrato deve ser abstrata também
+- Métodos abstratos são declarados com o modificador abstract antes do tipo de retorno
+- Não possuem corpo
+
+```java
+public abstract class Figura {
+    private Color cor;
+    public abstract void desenhar();
+}
+```
+
+- Uma classe abstrata pode ser especializada a partir de uma classe concreta
+
+### Impedir que um método seja sobrescrito
+-  Em algumas ocasiões, um método possui uma implementação que não deveria estar sujeito a ser alterado através da sobrescrita de métodos em subclasses, pois a mudança de algoritmo pode tornar o estado do objeto inconsistente.
+- Para impedir que um método seja sobrescrito na subclasse, utilizar a palavra reservada final, antes do tipo de dado de retorno, como em:
+
+```java
+public final void metodo1() {
+    // ...
+}
+```
+
+### Impedir que uma classe seja estendida
+- É possível impedir a extensão de uma classe. Para isso, utilizar a palavra reservada final antes da palavra class, como em:
+
+```java
+public final class Classe1 {
+    // ...
+}
+public class Classe2 extends Classe1 {
+    // Erro de compilação
+}
+```
+
+- Este recurso é útil, por exemplo, para criar classes de objetos imutáveis, como os objetos da classe String.
